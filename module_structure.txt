@@ -1,0 +1,63 @@
+audio_assistant/
+│
+├── notebooks/                   # For prototyping & dev
+│   ├── 01_noise_cancellation.ipynb
+│   ├── 02_speech_enhancement.ipynb
+│   ├── 03_speaker_separation.ipynb
+│   └── 04_speakerwise_stt.ipynb
+│
+├── components/                  # Core model wrappers
+│   ├── noise_canceller.py       # DeepFilterNet wrapper
+│   ├── speech_enhancer.py       # VoiceFixer wrapper
+│   ├── speaker_separator.py     # Demucs wrapper
+│   ├── stt_transcriber.py       # Whisper wrapper
+│   ├── diarizer.py              # Optional: pyannote or speaker ID module
+│   └── pipeline.py              # Sequential pipeline builder
+│
+├── utils/                       # Helper utilities
+│   ├── audio_io.py              # Load/save/resample audio
+│   ├── audio_chunking.py        # Segment long audio
+│   ├── inference_utils.py       # Post-processing predictions
+│   ├── speaker_utils.py         # Speaker mapping, IDs
+│   └── web_audio_stream.py      # Handle audio from browser streams
+│
+├── logging/                     # Logging system
+│   ├── logger.py
+│   └── __init__.py
+│
+├── models/                      # Store downloaded or fine-tuned model weights
+│   ├── deepfilternet/
+│   ├── voicefixer/
+│   ├── demucs/
+│   └── whisper/
+│
+├── config/                      # Config and settings
+│   ├── settings.yaml            # General config
+│   ├── model_paths.yaml         # Model locations and weights
+│   └── inference_config.yaml    # Inference params
+│
+├── data/                        # Input/output data storage
+│   ├── input/
+│   ├── output/
+│   └── logs/
+│
+├── api/                         # Backend serving interface
+│   ├── app.py                   # FastAPI app entry
+│   ├── routes/
+│   │   ├── process_audio.py
+│   │   ├── transcript.py
+│   │   └── healthcheck.py
+│   └── schemas/
+│       └── request_response.py
+│
+├── tests/                       # Unit and integration tests
+│   ├── test_noise.py
+│   ├── test_enhancer.py
+│   ├── test_pipeline.py
+│   └── test_api.py
+│
+├── requirements.txt             # Python dependencies
+├── Dockerfile                   # For containerization
+├── run_pipeline.py              # CLI to run the full pipeline on a file
+├── README.md                    # Project documentation
+└── .env                         # For secrets / config override
